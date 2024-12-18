@@ -1,7 +1,7 @@
 Añada el requisito de información Alumno Interno. Un alumno interno es un estudiante que colabora con un Departamento en actividades docentes o de investigación. Sus atributos son: el departamento en el que el estudiante participa como alumno interno, el estudiante involucrado, el año académico en el que se hace la colaboración y el número de meses que dura la colaboración. Hay que tener en cuenta las siguientes restricciones:
 -	Los estudiantes sólo pueden ser alumnos internos una vez en un único curso académico.
 -	El número de meses de la colaboración debe ser como máximo de 9 meses y como mínimo de 3.
--	Todos los atributos son obligatorios, menos el número de meses de la colaboración.
+-	Todos los atributos   son obligatorios, menos el número de meses de la colaboración.
 
 ```sql
 DROP TABLE if EXISTS alumnosinternos;
