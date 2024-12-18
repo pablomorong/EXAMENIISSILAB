@@ -1,4 +1,4 @@
-/*Añada el requisito de información Material. Un material es un activo disponible en un aula para la realización de actividades docentes. Sus atributos son: el aula en el que se encuentra el material, el nombre del material, la cantidad disponible, la fecha de adquisición (puede ser futura) y el valor total. Hay que tener en cuenta las siguientes restricciones:
+Añada el requisito de información Material. Un material es un activo disponible en un aula para la realización de actividades docentes. Sus atributos son: el aula en el que se encuentra el material, el nombre del material, la cantidad disponible, la fecha de adquisición (puede ser futura) y el valor total. Hay que tener en cuenta las siguientes restricciones:
 -	El valor total ser inferior a 20.000€.
 -	La cantidad debe ser de entre 1 y 50.
 -	Un aula no puede tener varios materiales con el mismo nombre.
@@ -35,8 +35,8 @@ DELIMITER //
  CALL pInsertarMaterial(2, 'material 3',2,'2020-12-12', 5000);
  ```
 
-/* Cree un procedimiento almacenado llamado pUpdateMaterials(c, a) que actualiza la cantidad de los materiales del aula con ID=c con el valor a. Ejecute la llamada a pUpdateMaterials(1,2).
-Cree un procedimiento almacenado llamado pDeleteMaterials(c) que elimina los materiales del aula con ID=c. Ejecute la llamada pDeleteMaterials(2)*/
+Cree un procedimiento almacenado llamado pUpdateMaterials(c, a) que actualiza la cantidad de los materiales del aula con ID=c con el valor a. Ejecute la llamada a pUpdateMaterials(1,2).
+Cree un procedimiento almacenado llamado pDeleteMaterials(c) que elimina los materiales del aula con ID=c. Ejecute la llamada pDeleteMaterials(2)
 
 ```sql
 DELIMITER //
