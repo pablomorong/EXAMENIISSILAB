@@ -1,11 +1,11 @@
-/*### 1. Creación de tabla. (1,5 puntos)
+### 1. Creación de tabla. (1,5 puntos)
 
 Incluya su solución en el fichero `1.solucionCreacionTabla.sql`.
 
 Necesitamos conocer la opinión de nuestros clientes sobre nuestros productos. Para ello se propone la creación de una nueva tabla llamada `Valoraciones`. Cada valoración versará sobre un producto y será realizada por un solo cliente. Cada producto podrá ser valorado por muchos clientes. Cada cliente podrá realizar muchas valoraciones. Un cliente no puede valorar más de una vez un mismo producto.
 
-Para cada valoración necesitamos conocer la puntuación de 1 a 5 (sólo se permiten enteros) y la fecha en que se realiza la valoración.*/
-
+Para cada valoración necesitamos conocer la puntuación de 1 a 5 (sólo se permiten enteros) y la fecha en que se realiza la valoración.
+```sql
 CREATE TABLE valoraciones(
 valoracionId INT AUTO_INCREMENT PRIMARY KEY,
 productoId INT,
@@ -20,28 +20,28 @@ FOREIGN KEY (clienteId) REFERENCES clientes(id)
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
 );
+```
+### 2. Consultas SQL (DQL). 3 puntos
 
-/*### 2. Consultas SQL (DQL). 3 puntos
+Incluya su solución en el fichero `2.solucionConsultas.sql`.
 
-Incluya su solución en el fichero `2.solucionConsultas.sql`.*/
-
-/*#### 2.1. Devuelva el nombre del producto, el precio unitario y las unidades compradas para las 5 líneas de pedido con más unidades. (1 punto)*/
-
+#### 2.1. Devuelva el nombre del producto, el precio unitario y las unidades compradas para las 5 líneas de pedido con más unidades. (1 punto)
+```sql
 SELECT productos.nombre, lineaspedido.precio, lineaspedido.unidades FROM lineaspedido
 JOIN productos ON lineaspedido.productoId = productos.id
 ORDER BY lineaspedido.unidades DESC
 LIMIT 5;
-
-/*#### 2.3. Devuelva el nombre del empleado, la fecha de realización del pedido, el precio total del pedido y las unidades totales del pedido para todos los pedidos que de más 7 días de antigüedad desde que se realizaron. Si un pedido no tiene asignado empleado, también debe aparecer en el listado devuelto. (2 puntos)*/
-
+```
+#### 2.3. Devuelva el nombre del empleado, la fecha de realización del pedido, el precio total del pedido y las unidades totales del pedido para todos los pedidos que de más 7 días de antigüedad desde que se realizaron. Si un pedido no tiene asignado empleado, también debe aparecer en el listado devuelto. (2 puntos)
+```sql
 SELECT usuarios.nombre, pedidos.fechaRealizacion, SUM(lineaspedido.precio) AS precioTotal, SUM(lineaspedido.unidades) AS unidadesTotales FROM lineaspedido
 RIGHT JOIN pedidos ON lineaspedido.pedidoId = pedidos.id
 RIGHT JOIN empleados ON pedidos.empleadoId = empleados.id
 RIGHT JOIN usuarios ON usuarios.id = empleados.usuarioId
 GROUP BY usuarios.nombre
 HAVING TIMESTAMPDIFF(DAY, pedidos.fechaRealizacion, CURDATE())>7;
-
-/*### 3. Procedimiento. Bonificar pedido retrasado. 3,5 puntos
+```
+### 3. Procedimiento. Bonificar pedido retrasado. 3,5 puntos
 
 Incluya su solución en el fichero `3.solucionProcedimiento.sql`.
 
@@ -52,7 +52,7 @@ Asegure que el pedido estaba asociado a un empleado y en caso contrario lance ex
 `El pedido no tiene gestor`.
 
 Garantice que o bien se realizan todas las operaciones o bien no se realice ninguna. (1 punto)*/
-
+```sql
 DELIMITER //
 
 CREATE OR REPLACE PROCEDURE ejercicio3C(pedidoId INT)
@@ -95,14 +95,14 @@ COMMIT ;
 END //
 
 DELIMITER ;
+```
 
-
-/*### 4. Trigger. 2 puntos
+### 4. Trigger. 2 puntos
 
 Incluya su solución en el fichero `4.solucionTrigger.sql`.
 
-Cree un trigger llamado `p_limitar_unidades_mensuales_de_productos_fisicos` que, a partir de este momento, impida la venta de más de 1000 unidades al mes de cualquier producto físico.*/
-
+Cree un trigger llamado `p_limitar_unidades_mensuales_de_productos_fisicos` que, a partir de este momento, impida la venta de más de 1000 unidades al mes de cualquier producto físico.
+```sql
 CREATE TRIGGER p_limitar_unidades_mensuales_de_productos_fisicos
 BEFORE INSERT ON LineasPedido
 FOR EACH ROW
@@ -119,3 +119,4 @@ ACABAR
 END //
 
 DELIMITER ;
+```
