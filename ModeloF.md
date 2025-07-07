@@ -141,5 +141,30 @@ END //
 
 DELIMITER ;
  ```
+5. Función. (1,5 puntos)
+Incluya su solución en el fichero 5.solucionFuncion.sql.
+
+Cree una función llamada numero_productos_cliente que reciba como parámetro el ID de un cliente y devuelva el número total de productos diferentes que ese cliente ha comprado en todos sus pedidos.
+
+Solo deben contarse productos distintos, aunque se hayan comprado varias veces.
+
+Si el cliente no ha hecho ningún pedido, la función debe devolver 0.
+
+```sql
+DELIMITER //
+
+ CREATE OR REPLACE FUNCTION numero_productos_cliente(clienteId INT) RETURNS INT
+ BEGIN
  
+ DECLARE res INT;
+ 
+    SELECT IFNULL(COUNT(DISTINCT lineaspedido.productoId),0) INTO res FROM lineaspedido
+    JOIN pedidos ON lineaspedido.pedidoId = pedidoId
+    WHERE clienteId = pedidos.clienteId;
+	 
+	 RETURN res;
+  
+ END //
+ DELIMITER ;
+```
 
