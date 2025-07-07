@@ -10,3 +10,5 @@
   5. Having
   6. Order by
   7. Limit
+### Archivos con cosas importantes
+Funciones -> ModeloE y ModeloF
