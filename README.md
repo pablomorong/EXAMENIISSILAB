@@ -13,6 +13,8 @@
 ### Archivos con cosas importantes
 - Funciones -> ModeloE y ModeloF
 - TIMESTAMPDIFF -> ModeloB
+  ![Uploading image.png…]()
+
 - Uso de variables -> ModeloB
 ### Como llamar
 - Funciones y Vistas -> SELECT
