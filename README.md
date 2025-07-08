@@ -25,3 +25,8 @@ fecha_inicio y fecha_fin: son valores de tipo DATE, DATETIME o TIMESTAMP
 ### Como llamar
 - Funciones y Vistas -> SELECT
 - Procedures -> CALL
+
+## Variantes para las foreign key
+on delete Set default -> Si lo elimino se vuelve default
+on delete Set null -> si lo elimino se vuelve null
+on delete Restrict -> Si borro un dato me pone una restriccion
