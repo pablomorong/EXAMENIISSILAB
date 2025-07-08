@@ -12,3 +12,5 @@
   7. Limit
 ### Archivos con cosas importantes
 Funciones -> ModeloE y ModeloF
+TIMESTAMPDIFF -> ModeloB
+Uso de variables -> ModeloB
