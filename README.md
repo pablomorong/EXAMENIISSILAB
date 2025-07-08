@@ -11,6 +11,9 @@
   6. Order by
   7. Limit
 ### Archivos con cosas importantes
-Funciones -> ModeloE y ModeloF
-TIMESTAMPDIFF -> ModeloB
-Uso de variables -> ModeloB
+- Funciones -> ModeloE y ModeloF
+- TIMESTAMPDIFF -> ModeloB
+- Uso de variables -> ModeloB
+### Como llamar
+- Funciones y Vistas -> SELECT
+- Procedures -> CALL
