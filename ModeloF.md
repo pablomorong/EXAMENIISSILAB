@@ -168,3 +168,36 @@ DELIMITER //
  DELIMITER ;
 ```
 
+6. Vista. (1,5 puntos)
+Incluya su solución en el fichero 6.solucionVista.sql.
+
+Cree una vista llamada resumen_clientes_activos que muestre, para cada cliente que haya realizado al menos un pedido en el último año:
+
+Nombre del cliente
+
+Número total de pedidos realizados en el último año
+
+Número total de productos comprados
+
+Importe total gastado (precioUnitario × unidades)
+
+```sql
+-- Crear la vista
+CREATE OR REPLACE VIEW resumen_clientes_activos AS
+SELECT 
+    c.nombre AS nombreCliente,
+    COUNT(DISTINCT p.id) AS numeroPedidos,
+    SUM(lp.unidades) AS totalProductos,
+    SUM(lp.precioUnitario * lp.unidades) AS totalGastado
+FROM Clientes c
+JOIN Pedidos p ON c.id = p.idCliente
+JOIN LineasPedido lp ON p.id = lp.idPedido
+WHERE p.fechaRealizacion >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY c.id;
+
+-- Consulta de ejemplo que utiliza la vista
+-- Mostrar clientes que han gastado más de 500€ en el último año
+SELECT *
+FROM resumen_clientes_activos
+WHERE totalGastado > 500;
+```
